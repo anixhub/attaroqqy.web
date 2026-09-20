@@ -60,6 +60,7 @@ export interface Article {
   tags: string[];
   views: number;
   featured?: boolean;
+  status?: 'published' | 'draft' | 'archived';
 }
 
 export interface MawaidhItem {

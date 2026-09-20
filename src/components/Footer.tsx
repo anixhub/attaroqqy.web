@@ -17,10 +17,12 @@ import { ActivePage } from '../types';
 
 interface FooterProps {
   onNavigate: (page: ActivePage, subPage?: string) => void;
+  onNavigateToAdmin?: () => void;
+  isAdmin?: boolean;
   darkMode: boolean;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigate, darkMode }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigate, onNavigateToAdmin, isAdmin = false, darkMode }) => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -255,8 +257,20 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, darkMode }) => {
           <div>
             Pondok Pesantren At-Taroqqy Sarang © 2026. Hak Cipta Dilindungi Undang-Undang.
           </div>
-          <div className="flex items-center gap-1">
-            <span>Dikelola oleh Tim Multimedia & Lembaga Pers Santri (LPS)</span>
+          <div className="flex items-center gap-3">
+            <span>Dikelola oleh Tim Multimedia & LPS</span>
+            {isAdmin && onNavigateToAdmin && (
+              <>
+                <span>•</span>
+                <button
+                  type="button"
+                  onClick={onNavigateToAdmin}
+                  className="hover:text-[#C9A227] text-emerald-300 font-semibold underline underline-offset-2 transition cursor-pointer"
+                >
+                  Portal Admin CMS
+                </button>
+              </>
+            )}
           </div>
         </div>
 

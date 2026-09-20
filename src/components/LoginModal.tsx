@@ -5,6 +5,7 @@ interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
   onLoginSuccess: (name: string) => void;
+  onOpenAdminLogin?: () => void;
   darkMode: boolean;
 }
 
@@ -14,6 +15,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
   isOpen,
   onClose,
   onLoginSuccess,
+  onOpenAdminLogin,
   darkMode
 }) => {
   const [activeTab, setActiveTab] = useState<AuthTab>('login');
@@ -237,8 +239,21 @@ export const LoginModal: React.FC<LoginModalProps> = ({
         </form>
 
         {/* Footer info */}
-        <div className="px-6 py-3 bg-slate-50 dark:bg-emerald-950/60 border-t border-slate-200 dark:border-emerald-900/60 text-center text-[11px] text-slate-500">
-          Akun digunakan untuk memantau nilai madrasah dan status pembayaran santri.
+        <div className="px-6 py-3 bg-slate-50 dark:bg-emerald-950/60 border-t border-slate-200 dark:border-emerald-900/60 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-500 dark:text-emerald-300/80">
+          <span>Portal wali santri & alumni pesantren</span>
+          {onOpenAdminLogin && (
+            <button
+              type="button"
+              onClick={() => {
+                onClose();
+                onOpenAdminLogin();
+              }}
+              className="text-[#0B5E3A] dark:text-[#C9A227] font-semibold hover:underline cursor-pointer flex items-center gap-1"
+            >
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>Login Pengurus (Admin CMS)</span>
+            </button>
+          )}
         </div>
 
       </div>

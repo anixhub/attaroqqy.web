@@ -9,12 +9,17 @@ import {
   LogIn, 
   Moon, 
   Sun,
-  Calendar
+  Calendar,
+  Shield
 } from 'lucide-react';
 import { PESANTREN_INFO } from '../data/mockData';
 
 interface TopBarProps {
   onOpenLogin: () => void;
+  onOpenAdmin?: () => void;
+  isAdmin?: boolean;
+  adminName?: string;
+  onAdminLogout?: () => void;
   isLoggedIn: boolean;
   userName?: string;
   onLogout: () => void;
@@ -24,6 +29,10 @@ interface TopBarProps {
 
 export const TopBar: React.FC<TopBarProps> = ({
   onOpenLogin,
+  onOpenAdmin,
+  isAdmin = false,
+  adminName,
+  onAdminLogout,
   isLoggedIn,
   userName,
   onLogout,
@@ -126,6 +135,31 @@ export const TopBar: React.FC<TopBarProps> = ({
             {darkMode ? <Sun className="w-3.5 h-3.5 text-amber-300" /> : <Moon className="w-3.5 h-3.5 text-emerald-200" />}
             <span className="hidden md:inline">{darkMode ? 'Terang' : 'Gelap'}</span>
           </button>
+
+          {/* Admin CMS Portal Link - ONLY visible when logged in as admin */}
+          {isAdmin && onOpenAdmin && (
+            <div className="flex items-center gap-1.5 bg-[#C9A227]/20 border border-[#C9A227]/60 rounded px-2 py-0.5 text-xs">
+              <button
+                type="button"
+                onClick={onOpenAdmin}
+                className="flex items-center gap-1 text-[#C9A227] hover:text-amber-200 font-semibold transition-colors cursor-pointer"
+                title={`Buka Panel Admin CMS (${adminName || 'Admin'})`}
+              >
+                <Shield className="w-3.5 h-3.5 text-[#C9A227]" />
+                <span className="hidden sm:inline">Admin CMS</span>
+              </button>
+              {onAdminLogout && (
+                <button
+                  type="button"
+                  onClick={onAdminLogout}
+                  className="text-[10px] text-red-300 hover:text-red-100 hover:underline cursor-pointer border-l border-[#C9A227]/40 pl-1.5 ml-0.5"
+                  title="Keluar dari sesi Admin CMS"
+                >
+                  Keluar
+                </button>
+              )}
+            </div>
+          )}
 
           {/* Login / User Status */}
           {isLoggedIn ? (
