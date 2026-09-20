@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-arabic: 'Amiri', 'Traditional Arabic', serif;
+    --font-serif: 'Lora', 'Playfair Display', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+.font-arabic {
+  font-family: 'Amiri', 'Traditional Arabic', serif;
+}
+
+.font-serif-heading {
+  font-family: 'Lora', 'Playfair Display', Georgia, serif;
+}
+
+.font-body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Islamic Geometric Border Divider */
+.islamic-divider {
+  background-image: radial-gradient(circle, #C9A227 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+}
+
+/* Subtle Arabesque Star Pattern */
+.bg-arabesque {
+  background-color: #0B5E3A;
+  background-image: radial-gradient(rgba(201, 162, 39, 0.18) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.bg-arabesque-light {
+  background-color: #FAF7F0;
+  background-image: radial-gradient(rgba(11, 94, 58, 0.08) 1.2px, transparent 0);
+  background-size: 20px 20px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1ede4;
+}
+::-webkit-scrollbar-thumb {
+  background: #0B5E3A;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #08442a;
+}

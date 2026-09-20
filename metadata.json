@@ -1,0 +1,6 @@
+{
+  "name": "Pondok Pesantren At-Taroqqy Sarang",
+  "description": "Portal Resmi & Warta Berita Pondok Pesantren Salaf At-Taroqqy Sarang Rembang. Memuat profil lembaga, kajian turats, bahtsul masail, mawaidh syaikhuna, dan pendaftaran santri baru.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
